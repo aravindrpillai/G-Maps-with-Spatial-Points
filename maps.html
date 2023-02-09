@@ -1,0 +1,27 @@
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly" ></script>
+
+<div id="map" style="height: 400px; width: 100%;"></div>
+<input type="text" id="lat" value="">
+<input type="text" id="lng" value="">
+
+
+<script>
+function initMap() {
+  const myLatlng = { lat: -25.363, lng: 131.044 };
+  const map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 4,
+    center: myLatlng,
+  });
+  
+  map.addListener("click", (mapsMouseEvent) => {
+	var latLongObj = mapsMouseEvent.latLng.toJSON()
+	document.getElementById("lat").value = latLongObj["lat"];
+	document.getElementById("lng").value = latLongObj["lng"];
+  });
+}
+
+window.initMap = initMap;
+
+</script>
+
+
